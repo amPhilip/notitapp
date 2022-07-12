@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button } from '@material-ui/core';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Landing = () => {
@@ -11,7 +11,7 @@ const Landing = () => {
   }, []);
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Navigate to='/dashboard' />;
   }
 
   return (

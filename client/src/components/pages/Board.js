@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { getBoard, moveCard, moveList } from '../../actions/board';
 import { CircularProgress, Box } from '@material-ui/core';
@@ -25,7 +25,7 @@ const Board = ({ match }) => {
   }, [board?.title]);
 
   if (!isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Navigate to='/' replace={true} />;
   }
 
   const onDragEnd = (result) => {

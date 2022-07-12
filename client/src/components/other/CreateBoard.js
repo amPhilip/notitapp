@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addBoard } from '../../actions/board';
 import { Modal, TextField, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from '../../utils/modalStyles';
+
+
+/*-----------------Replacing withRouter React-Router-Dom Function-----*/
+export const withRouter = (CreateBoard) => {
+	const Wrapper = (props) => {
+		const history = useNavigate();
+		return <CreateBoard history={history} {...props} />;
+	};
+	return Wrapper;
+};
+
+
 
 const CreateBoard = ({ history }) => {
   const classes = useStyles();

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { getBoards } from '../../actions/board';
 import CreateBoard from '../other/CreateBoard';
 import Navbar from '../other/Navbar';
@@ -21,7 +21,7 @@ const Dashboard = () => {
   }, []);
 
   if (!isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Navigate to='/' replace={true} />;
   }
 
   return (
